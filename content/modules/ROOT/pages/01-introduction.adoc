@@ -78,7 +78,16 @@ claude plugin install example-skills@anthropic-agent-skills
 
 This downloads all the example skills — including `brand-guidelines`, `skill-creator`, `frontend-design`, and others. Claude Code will make them available for all your sessions.
 
-*Step 3: Implicit Trigger*
+*Step 3: Start Claude Code*
+
+Start an interactive Claude Code session so you can try out the skill:
+
+[source,bash,role="execute"]
+----
+claude
+----
+
+*Step 4: Implicit Trigger*
 
 Skills can activate automatically based on context. Try asking a question that relates to brand consistency:
 
@@ -89,7 +98,7 @@ Skills can activate automatically based on context. Try asking a question that r
 
 Claude will detect that your query involves brand/design elements and automatically engage the `brand-guidelines` skill. The response will reference brand principles, color accessibility standards, and consistency checks — behavior shaped by the skill's instructions.
 
-*Step 4: Explicit Trigger*
+*Step 5: Explicit Trigger*
 
 You can also invoke skills directly using slash commands:
 
@@ -100,7 +109,7 @@ You can also invoke skills directly using slash commands:
 
 The explicit trigger guarantees the skill activates regardless of context. This is useful when you want to apply a specific lens to your query, even if the context doesn't naturally suggest it.
 
-*Step 5: Observe the Difference*
+*Step 6: Observe the Difference*
 
 Compare these two prompts:
 
@@ -118,7 +127,7 @@ With the skill (explicit):
 
 The first might give you general color theory advice. The second will evaluate the choice through a brand lens — checking contrast ratios, consistency with existing palette, accessibility compliance, and alignment with brand values.
 
-*Step 6: Verify Installation*
+*Step 7: Verify Installation*
 
 Confirm the skill is installed by listing your plugins directory:
 
