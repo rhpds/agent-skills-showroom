@@ -162,7 +162,7 @@ You can confirm the plugin is installed by checking the installed plugins config
 
 [source,bash,role="execute"]
 ----
-cat ~/.claude/plugins/installed_plugins.json
+less ~/.claude/plugins/installed_plugins.json
 ----
 
 You should see `example-skills` listed among your installed plugins. You can also browse the cached plugin contents to see the skills it includes:
