@@ -87,56 +87,65 @@ Start an interactive Claude Code session so you can try out the skill:
 claude
 ----
 
-*Step 4: Implicit Trigger*
+*Step 4: Explicit Trigger*
 
-Skills can activate automatically based on context. Try asking a question that relates to brand consistency:
+The most reliable way to use a skill is the explicit trigger — a slash command using the skill's name. Since `brand-guidelines` is part of the `example-skills` plugin, invoke it with the namespaced command:
 
-[source,text]
-----
-> review these colors for brand consistency: #FF6B35 and #004E89
-----
-
-Claude will detect that your query involves brand/design elements and automatically engage the `brand-guidelines` skill. The response will reference brand principles, color accessibility standards, and consistency checks — behavior shaped by the skill's instructions.
-
-*Step 5: Explicit Trigger*
-
-You can also invoke skills directly using slash commands:
-
-[source,text]
-----
-> /example-skills:brand-guidelines check the hero section colors
-----
-
-The explicit trigger guarantees the skill activates regardless of context. This is useful when you want to apply a specific lens to your query, even if the context doesn't naturally suggest it.
-
-*Step 6: Observe the Difference*
-
-Compare these two prompts:
-
-Without the skill:
-[source,text]
-----
-> what do you think of using #FF6B35 for buttons?
-----
-
-With the skill (explicit):
 [source,text]
 ----
 > /example-skills:brand-guidelines what do you think of using #FF6B35 for buttons?
 ----
 
-The first might give you general color theory advice. The second will evaluate the choice through a brand lens — checking contrast ratios, consistency with existing palette, accessibility compliance, and alignment with brand values.
+When the skill activates, you'll see it listed in the skill usage area of Claude's response. The output will reference Anthropic's specific brand colors, typography, and design standards — not generic color theory advice.
+
+[TIP]
+====
+How do you know a skill was invoked? Look for the skill name in Claude's response header or tool usage. If Claude responds with generic advice (e.g., asking "which brand?"), the skill didn't activate — try the explicit `/skill-name` trigger.
+====
+
+*Step 5: Implicit Trigger*
+
+Skills can also activate automatically when Claude's assessment of your prompt matches the skill's description. This is called _implicit triggering_ — and it's less predictable than explicit triggers.
+
+Try a prompt that closely matches the `brand-guidelines` description:
+
+[source,text]
+----
+> apply Anthropic brand styling to this heading section
+----
+
+Because the skill's description mentions "Anthropic's official brand colors" and "style guidelines," Claude is more likely to activate it here. But implicit triggering depends on how well your phrasing matches the skill's description. A vague prompt like "review these colors" may not trigger it at all.
+
+This is an important lesson: *write skill descriptions that are specific enough to trigger on the right prompts, but not so broad they trigger on everything.* You'll practice this when building your own skills in Module 2.
+
+*Step 6: Compare With and Without*
+
+To see the difference clearly, try the same question without invoking the skill:
+
+[source,text]
+----
+> what colors work well for a professional website?
+----
+
+Then with the skill:
+
+[source,text]
+----
+> /example-skills:brand-guidelines what colors work well for a professional website?
+----
+
+Without the skill, Claude gives general design advice. With it, Claude applies Anthropic's specific palette and guidelines.
 
 *Step 7: Verify Installation*
 
-Confirm the skill is installed by listing your plugins directory:
+You can confirm the plugin is installed by listing your plugins:
 
 [source,bash,role="execute"]
 ----
 ls ~/.claude/plugins/
 ----
 
-You should see the `example-skills` plugin listed, which contains the `brand-guidelines` skill among others.
+You should see the `example-skills` plugin listed, which contains `brand-guidelines` among other skills.
 
 [NOTE]
 .Coming from Cursor?
