@@ -239,7 +239,7 @@ Now test your skill to see how it performs.
 
 === Test Implicit Triggering
 
-Start a new Claude Code session (or use `/clear` to reset context).
+Start a new Claude Code session `claude` (or use `/clear` to reset context).
 Then try a natural language request:
 
 [source,text]
