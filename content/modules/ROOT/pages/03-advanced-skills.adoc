@@ -244,7 +244,7 @@ TEMPLATE_EOF
 ----
 ====
 
-Create `~/.claude/skills/abstract-writer/templates/full-session.md`:
+Now create `~/.claude/skills/abstract-writer/templates/full-session.md` the same way — *Code Preview* to read, *Run* to create:
 
 [tabs]
 ====
