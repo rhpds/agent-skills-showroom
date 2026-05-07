@@ -20,6 +20,13 @@ If not, install it now:
 claude plugin install example-skills@anthropic-agent-skills
 ----
 
+If it's already installed, you can check for updates:
+
+[source,bash,role="execute"]
+----
+claude plugin update example-skills@anthropic-agent-skills
+----
+
 The marketplace concept will be explained fully in Module 4.
 For now, know that you've installed a pre-built plugin maintained by Anthropic that bundles several skills together.
 
