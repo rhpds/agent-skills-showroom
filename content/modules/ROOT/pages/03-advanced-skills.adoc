@@ -155,8 +155,12 @@ Create a templates directory:
 mkdir -p ~/.claude/skills/abstract-writer/templates
 ----
 
-Create a lightning talk template at `~/.claude/skills/abstract-writer/templates/lightning-talk.md`:
+Create `~/.claude/skills/abstract-writer/templates/lightning-talk.md` using your favorite editor with the content from *Code Preview*, or switch to the *Run* tab to create the file in one step:
 
+[tabs]
+====
+Code Preview::
++
 [source,markdown]
 ----
 # Lightning Talk Abstract Template
@@ -196,8 +200,56 @@ Example:
 **Target Audience:** Platform engineers and SREs familiar with Kubernetes basics
 ----
 
-Create a full session template at `~/.claude/skills/abstract-writer/templates/full-session.md`:
+Run::
++
+[source,bash,role="execute"]
+----
+cat > ~/.claude/skills/abstract-writer/templates/lightning-talk.md << 'TEMPLATE_EOF'
+# Lightning Talk Abstract Template
 
+**Format:** 5-minute presentation
+**Word limit:** 100 words maximum
+
+## Structure
+
+**Title:** Punchy, specific, under 10 words
+
+**Abstract:** Single compelling paragraph that:
+- States the core problem or opportunity
+- Hints at the solution or insight
+- Promises one concrete takeaway
+
+**Key Takeaways:** (bullet list)
+- Takeaway 1
+- Takeaway 2
+- Takeaway 3
+
+**Target Audience:** Who will benefit most from this talk
+
+---
+
+Example:
+
+**Title:** Debugging Kubernetes with eBPF in Under 5 Minutes
+
+**Abstract:** When your pods crash and logs don't help, eBPF can trace system calls in real-time without modifying your application. I'll demonstrate a live debugging workflow using bpftrace to diagnose a memory leak in a production cluster, walking through the exact commands and showing the output that led to the fix. You'll leave with a copy-paste-ready debugging script.
+
+**Key Takeaways:**
+- How to attach eBPF probes to running containers
+- Reading bpftrace output to identify resource leaks
+- Three debugging patterns for common pod failures
+
+**Target Audience:** Platform engineers and SREs familiar with Kubernetes basics
+TEMPLATE_EOF
+----
+====
+
+Create `~/.claude/skills/abstract-writer/templates/full-session.md`:
+
+[tabs]
+====
+Code Preview::
++
 [source,markdown]
 ----
 # Full Session Abstract Template
@@ -253,6 +305,67 @@ You'll walk away with a decision framework for sequencing migrations, a testing 
 
 **Prerequisites:** Familiarity with service-oriented architecture concepts and experience deploying production systems
 ----
+
+Run::
++
+[source,bash,role="execute"]
+----
+cat > ~/.claude/skills/abstract-writer/templates/full-session.md << 'TEMPLATE_EOF'
+# Full Session Abstract Template
+
+**Format:** 30-45 minute presentation
+**Word limit:** 250-300 words
+
+## Structure
+
+**Title:** Clear, specific, benefit-focused (under 15 words)
+
+**Abstract:** 2-3 paragraphs covering:
+
+Paragraph 1: The problem, challenge, or opportunity. Set the stage with context that resonates with the target audience.
+
+Paragraph 2: Your approach, solution, or insights. What makes your perspective unique or valuable? Include real-world examples, data points, or lessons learned.
+
+Paragraph 3: What attendees will take away. Concrete skills, patterns, tools, or strategies they can apply immediately.
+
+**Learning Objectives:** (5 specific outcomes)
+- Attendees will be able to [action verb] [specific skill/knowledge]
+- Attendees will understand [concept] and how to apply it to [scenario]
+- Attendees will learn [technique] for [solving X problem]
+- Attendees will gain [capability] using [tool/method]
+- Attendees will be able to [evaluate/implement/design] [outcome]
+
+**Target Audience:** Be specific about role, experience level, and prerequisites
+
+**Prerequisites:** What attendees should know or have done before attending
+
+---
+
+Example:
+
+**Title:** From Monolith to Microservices: A Migration Pattern Language
+
+**Abstract:**
+
+Migrating from a monolith to microservices sounds simple in theory but is fraught with production incidents, team friction, and false starts in practice. Over two years, we broke apart a 500K-line Rails monolith serving 10M users into 30 microservices — and learned that the hard problems aren't technical, they're organizational.
+
+This talk presents a pattern language for incremental migration: strangler fig for carving out services, event interception for decoupling databases, contract testing for preventing regressions, and team topologies for reducing coordination overhead. Each pattern is grounded in a real production story — the database deadlock that taught us about distributed transactions, the silent data corruption that forced us to build lineage tracking, the deploy that took down checkout because we didn't own our dependencies.
+
+You'll walk away with a decision framework for sequencing migrations, a testing strategy that balances speed and safety, and tactics for keeping the monolith deployable while extraction is underway. If you're in the middle of a similar migration or planning one, this talk will save you from repeating our mistakes.
+
+**Learning Objectives:**
+- Attendees will be able to apply the strangler fig pattern to extract services incrementally without a full rewrite
+- Attendees will understand how to decouple shared databases using event interception and saga patterns
+- Attendees will learn contract testing strategies to prevent integration regressions across service boundaries
+- Attendees will gain techniques for measuring migration progress using domain-driven design bounded contexts
+- Attendees will be able to design team structures that minimize cross-service coordination using Team Topologies principles
+
+**Target Audience:** Engineering leads, architects, and senior engineers at organizations running large monolithic applications who are evaluating or planning a microservices migration
+
+**Prerequisites:** Familiarity with service-oriented architecture concepts and experience deploying production systems
+TEMPLATE_EOF
+----
+====
 
 === Update SKILL.md to Reference Templates
 
